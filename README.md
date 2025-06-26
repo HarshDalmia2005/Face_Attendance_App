@@ -1,14 +1,77 @@
-step 1: Create a realtime database in firebase and add the service accpunt key .json file in the folder in which the app is running
+# Face Attendance App
 
-step 2: Run the code of data_collection.ipynb to collect the images of your face in gray scale
-(note:Make sure that the name of the folder inside dataset folder created by the code is the person_name)
+A Python-based face recognition attendance system using OpenCV, Firebase Realtime Database, and Jupyter Notebooks.
 
-step 3: Run the code of training.ipynb to train your code on the LBPH face recognition algorithm
+## Features
 
-step 4: replace the url of the database with the url of your database and replace the name of the service account key
+- Collects facial images from a webcam for dataset creation
+- Trains a face recognition model using the LBPH algorithm
+- Real-time face recognition and attendance marking via webcam
+- Stores attendance data in Firebase Realtime Database
+- GUI built with Tkinter and CustomTkinter
 
-step 5: Now run the code of face attendance system
+## Requirements
 
-step 6: also install all the packages imported in the code before all these steps
+- Python 3.7+
+- OpenCV
+- Firebase Admin SDK
+- Tkinter, CustomTkinter
+- Pillow
+- Jupyter Notebook
+- Service account JSON key from Firebase
 
-this code is licensed under @HarshDalmia_2005
+## Setup & Usage
+
+### 1. Firebase Setup
+
+- Create a Firebase Realtime Database project.
+- Download the service account key JSON file.
+- Place the JSON key in your project directory.
+
+### 2. Collect Face Data
+
+- Run `data_collection.ipynb` to capture grayscale facial images from your webcam.
+- Follow the prompt to enter the person’s name (used as the folder name inside `dataset/`).
+- The script saves 100 images per person by default.
+
+### 3. Train the Model
+
+- Run `training.ipynb` to train the LBPH face recognizer on your dataset.
+- This creates a `face_recognizer.yml` model file and a `label_map.txt`.
+
+### 4. Configure Database
+
+- In your code, update the database URL to your Firebase project URL.
+- Set the path to your service account key JSON file.
+
+### 5. Run the Attendance System
+
+- Run `FACE_ATTENDANCE_SYSTEM.ipynb` to launch the GUI.
+- The system uses your webcam to recognize faces and automatically mark attendance in Firebase.
+
+### 6. Install Dependencies
+
+Install all required packages before running any code:
+
+```bash
+pip install opencv-python firebase-admin pillow customtkinter notebook
+```
+
+
+## Files
+
+| File/Folder                  | Description                                                        |
+|------------------------------|--------------------------------------------------------------------|
+| `data_collection.ipynb`      | Collects face images for each user using the webcam.               |
+| `training.ipynb`             | Trains the LBPH face recognition model on the collected dataset.   |
+| `FACE_ATTENDANCE_SYSTEM.ipynb` | Main GUI application for face recognition-based attendance.        |
+| `dataset/`                   | Stores images of faces (one subfolder per user).                   |
+| `face_recognizer.yml`        | The trained model file generated after training.                   |
+| `label_map.txt`              | Maps model labels to person names.                                 |
+| `serviceaccountkey.json`     | Firebase service account credentials (must be provided by user).   |
+| `background.png`             | Background image used in the GUI (if available).                   |
+| `Modes/`                     | Folder containing mode images for GUI display.                     |
+
+## License
+
+This project is licensed under the MIT License.
